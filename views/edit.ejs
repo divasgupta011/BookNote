@@ -1,0 +1,21 @@
+<!-- edit.ejs -->
+<%- include("header.ejs") %>
+
+<h1>Edit Book</h1>
+<form action="/editbook/<%= book.id %>" method="POST">
+    <label for="isbn">ISBN:</label>
+    <input type="text" id="isbn" name="isbn" value="<%= book.isbn %>"><br>
+    <label for="book_name">Book Name:</label>
+    <input type="text" id="book_name" name="book_name" value="<%= book.book_name %>"><br>
+    <label for="author_name">Author Name:</label>
+    <input type="text" id="author_name" name="author_name" value="<%= book.author_name %>"><br>
+    <label for="publish_date">Publish Date:</label>
+    <input type="date" id="publish_date" name="publish_date" value="<%= book.publish_date.toISOString().split('T')[0] %>"><br>
+    <label for="rating">Rating:</label>
+    <input type="number" id="rating" name="rating" value="<%= book.rating %>"><br>
+    <label for="notes">Notes:</label>
+    <textarea id="notes" name="notes"><%= book.notes %></textarea><br>
+    <button type="submit">Update</button>
+</form>
+
+<%- include("footer.ejs") %>

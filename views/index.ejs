@@ -1,0 +1,27 @@
+<%- include("header.ejs") %>
+
+<h1>Book Notes</h1>
+<ul>
+    <% bookNotes.forEach(book => { %>
+        <li>
+            <strong>ISBN:</strong> <%= book.isbn %> <br>
+            <strong>Book Name:</strong> <%= book.book_name %> <br>
+            <strong>Author Name:</strong> <%= book.author_name %> <br>
+            <strong>Publish Date:</strong> <%= book.publish_date %> <br>
+            <strong>Rating:</strong> <%= book.rating %>/10 <br>
+            <strong>Notes:</strong> <%= book.notes %> <br>
+            <% if (book.coverUrl) { %>
+                <img src="<%= book.coverUrl %>" alt="Book Cover">
+            <% } else { %>
+                <p>No cover image available</p>
+            <% } %>
+            <br>
+            <form action="/deletebook/<%= book.id %>" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+            <a href="/editbook/<%= book.id %>"><button>Edit</button></a>
+        </li>
+    <% }); %>
+</ul>
+
+<%- include("footer.ejs") %>
